@@ -12,20 +12,3 @@ int main(void) {
   assert (mode(y, 1) == 5);
   printf("Mode: passed\n");
   }
-
-int mode(int array[],int elements){
-  int modeCount=0,modeValue=0;
-  for(int i=0;i<elements;i++){
-      int count=0;
-      for(int j=0;j<elements;j++){
-        if(array[i]==array[j]){
-          count++;
-        }
-      }
-      if(count>modeCount){
-        modeCount=count;
-        modeValue=array[i];
-      }
-  }
-  return modeValue;
-}
