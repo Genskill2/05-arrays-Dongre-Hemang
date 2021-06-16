@@ -58,32 +58,39 @@ int mode(int array[],int elements){
 
 /* Factors Function*/
 
-int checkPrime(int n){
-       int checked=0;
-       for(int i=2;i<n;i++){
-           if(n%i==0){
-              return 0;
-           }
-           else{
-                return 1;
-           }
-        }
-   }
+int checkIfPrime(int);
 
-int factors(int number,int ret[]){
-    int i=2,count=0;
-    
-        while(i<number){
-            while(number%i==0){
-                if(checkPrime(i)==1){
-                    number/=i;
-                    ret[count]=i;
-                    count++;
-                 }
-            } 
+int factors(int number,int array[]){
+    int numberOfFactors=0;
+    int i=2;
+    while(i<number){
+        if(number%i==0)
+            if(checkIfPrime(i)==1){
+                array[numberOfFactors]=i;
+                numberOfFactors++;
+                number=number/i;
+                if(checkIfPrime(number)==1){
+                    array[numberOfFactors++]=number;
+                }
+            }
+            else continue;
+        else
             i++;
-        }
-        printf("%d\n",count);
-        return count;    
+    }
+    return numberOfFactors;
 }
-    
+
+int checkIfPrime(int n){
+    int checked=0;
+        for(int i=2;i<n;i++){
+            if(n%i==0){
+                checked=1;
+            }
+        }
+        if(checked==0)
+            return 1;
+        else
+            return 0;
+}
+
+       
