@@ -12,4 +12,3 @@ int main(void) {
   assert (min(y, 1) == 5);
   printf("Min: passed\n");
   }
-
